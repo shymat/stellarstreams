@@ -159,7 +159,6 @@ def create_stream_particle_spray(time_total, num_particles, pot_host, posvel_sat
 
 
 
-
 # sky coordinates in degrees, distance in kpc, proper motion in mas/yr, heliocentric line-of-sight velocity in km/s
 ra0, dec0 = 229.0, -0.124
 dist0 = 22.9
@@ -186,7 +185,7 @@ fromICRStoPal5 = numpy.array([
 # fiducial potential of the Milky Way, consisting of a disk and a spherical halo
 
 
-"adding a uniform distribution to the host galaxy parameters to make it more realistic and less like a toy model"
+"drawing priors etc. "
 
 
 rng = np.random.default_rng()  # optionally pass a seed, e.g. default_rng(42)
@@ -223,6 +222,7 @@ def sample_priors(rng):
     host_mtl_grz = tuple(float(x) for x in rng.uniform([2.5, 2.0, 1.6], [4.5, 3.6, 2.9]))
     center_offset_arcsec = tuple(float(x) for x in rng.uniform(-2.5, 2.5, size=2))
 
+    # describing these variables within a dictionary to recall later.
 
     return {
         "mn_mass": mn_mass,
